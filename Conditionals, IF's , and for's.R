@@ -54,3 +54,46 @@ switch(species,
        "mouse" = print("Squeaaaaak"))
 #see next week dpylr::case_when()!
 
+#### Writing For loops ####
+pupster <- 1
+dog_names <- c("teddy", "korra", "banjo", "waffle")
+
+for (pupster in dog_names) {
+  print(paste("My dogs name is", pupster))
+}
+
+#Another for loop example
+mass <-  seq(from = 0,
+             to = 3,
+             by = .5)
+
+for (i in mass){
+  new_val = i+ 2
+  print(new_val)
+}
+
+#practice with indexing 
+for (i in 1:length(mass)) {
+  new_val = mass[i]+2
+  print(new_val)
+  
+  
+}
+for (i in seq_along(mass)) { #seq along is doing 1:nrow stuff
+  new_val = mass[i]+2
+  print(new_val)
+  
+  
+}
+
+#last one before lunch 
+
+tree_height <- c(1,2,6,10)
+
+for (i in seq_along(trees$Height)) {
+  val = trees$Height[i] + trees$Height[i+1]
+  print(val)
+  
+}
+
+(trees$Height)
