@@ -163,3 +163,45 @@ for(i in seq_along(tigers)){
 total_cats <- tigers[i]+lions[i]
 big_cats[i] <- total_cats
 };big_cats
+
+#for loops over multiple columns
+mean_mt <- vector("numeric", length = ncol(mtcars))
+
+for(i in 1:ncol(mtcars)){
+  mean_val <- mean(mtcars[[i]],na.rm = TRUE)
+  mean_mt [i] <- mean_val
+}; mean_mt
+
+#for loop over cols with a condition 
+library(palmerpenguins)
+penguin_median = median(penguins[[3]])
+
+
+for (i in seq_along(penguins)){
+if (is.numeric(penguins[[i]])){
+  penguin_median = median(penguins[[i]], na.rm = TRUE)
+  print(penguin_median)
+} else {
+  print( "not numeric")
+}
+}
+
+#### Functional programming ####
+
+##Apply function iterates over columns or rows
+
+apply(X = mtcars,
+      MARGIN = 2, #1 is row 2 is columns
+      FUN = mean)
+
+library(tidyverse)
+
+penguins %>% 
+  group_by(species) %>% 
+  summarise(across(where(is.numeric), mean, na.rm = TRUE))#Across columns where the column is numeric and take a mean 
+
+#purr goes column by column 
+purrr::map(.x = mtcars, .f = mean)
+
+map_df(.x = mtcars, .f = mean)
+
